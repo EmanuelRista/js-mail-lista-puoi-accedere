@@ -1,0 +1,36 @@
+<!-- Chiedi all'utente la sua mail, controlla che sia nella lista di chi può accedere, stampa un messaggio appropriato -->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="box">
+      <label for="mail">Inserisci la tua mail</label>
+      <input type="text" id="mail_id" placeholder="Inserisci qui la tua email" name="mail" value="">
+      <button type="button" id="my_button" name="button">Login</button>
+      <p id="log-yes-or-not"></p>
+    </div>
+
+
+    <script type="text/javascript">
+    document.getElementById('my_button').addEventListener("click", displayLogMessage);//se clicco sul bottone attiva la funzione
+      function displayLogMessage() {//la funzione
+        var authorizedMailList = ["e.rista@outlook.it", "giulio.gallera@outlook.it", "padre.pio@outlook.it"];//dentro l'array ci sono le mail autorizzate
+        var userMail = document.getElementById('mail_id').value;//userMail = il valore che viene scritto nel campo input
+        if (authorizedMailList.includes(userMail)) {//se l'elenco delle mail autorizzate include anche il valore scritto nel campo input
+          document.getElementById('log-yes-or-not').innerHTML = "Accesso consentito";//allora bene
+          document.getElementById('mail_id').value = "";//e poi resetta il campo input
+        } else {//diversamente
+          document.getElementById('log-yes-or-not').innerHTML = "Accesso negato";//vaffanculo
+          document.getElementById('mail_id').value = "";//e poi resetta il campo input
+        };
+      };
+
+
+    </script>
+  </body>
+</html>
